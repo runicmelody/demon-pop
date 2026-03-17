@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://bqeytaq01da8p"]
+
+[ext_resource type="PackedScene" uid="uid://bw2m6rpraye2r" path="res://mob/spawner/spawner_model.glb" id="1_xd74l"]
+[ext_resource type="Shader" uid="uid://cfnwyva3u4qeb" path="res://mob/spawner/spawner_halo.gdshader" id="2_sswtx"]
+[ext_resource type="Material" uid="uid://bh1ego7bi1olb" path="res://mob/spawner/spawner_screen_material.tres" id="3_k3m7x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hc4kq"]
+render_priority = 0
+shader = ExtResource("2_sswtx")
+shader_parameter/color = Color(1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifhgv"]
+albedo_color = Color(0.00288886, 0.324699, 0.531728, 1)
+metallic = 0.4
+roughness = 0.37
+rim_enabled = true
+rim_tint = 0.0
+
+[sub_resource type="Animation" id="Animation_m0y2u"]
+resource_name = "rotatio "
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -2.0944, 0), Vector3(0, 4.18879, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_aconh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.0944, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v3jaq"]
+_data = {
+&"RESET": SubResource("Animation_aconh"),
+&"rotatio ": SubResource("Animation_m0y2u")
+}
+
+[node name="spawner_model" instance=ExtResource("1_xd74l")]
+
+[node name="halo" parent="." index="0"]
+material_override = SubResource("ShaderMaterial_hc4kq")
+
+[node name="Body" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ifhgv")
+surface_material_override/1 = ExtResource("3_k3m7x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_v3jaq")
+}
+autoplay = "rotatio "

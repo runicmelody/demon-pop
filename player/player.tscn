@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bq88qtgi51tnx"]
+
+[ext_resource type="Script" uid="uid://ciwo5pv871cix" path="res://player/player.tres.gd" id="1_g1dw6"]
+[ext_resource type="PackedScene" uid="uid://b8w8l5pcqjbf4" path="res://player/demon.tscn" id="2_g1dw6"]
+[ext_resource type="PackedScene" uid="uid://chjrhhjvxun3r" path="res://player/simple_gun/gun_model.glb" id="2_rkbax"]
+[ext_resource type="AudioStream" uid="uid://bk0cup3k4dgwx" path="res://mob/smoke_puff/poof_sound.wav" id="4_yw30f"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g1dw6"]
+height = 1.02
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_g1dw6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+shape = SubResource("CapsuleShape3D_g1dw6")
+debug_color = Color(0.678907, 0.504413, 0, 0.42)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, -1.46899e-13, 2.63386e-13, 1.18998e-13, 0.994685, 0.102966, -2.77112e-13, -0.102966, 0.994685, 2.27374e-13, 1.47237, 0.01279)
+
+[node name="gun_model" parent="Camera3D" instance=ExtResource("2_rkbax")]
+transform = Transform3D(-0.386432, 4.59846e-14, -5.83495e-08, -6.00797e-09, 0.384378, 0.0397893, 5.80394e-08, 0.0397893, -0.384378, 0.3, -0.257219, -0.428764)
+
+[node name="Marker3D" type="Marker3D" parent="Camera3D/gun_model"]
+unique_name_in_owner = true
+transform = Transform3D(2, -1.01644e-20, -1.42109e-13, 2.03288e-20, 2, 1.92805e-08, 1.42109e-13, -1.92805e-08, 2, -1.95372e-07, 4.76837e-07, 1.29389)
+gizmo_extents = 1.06
+
+[node name="demon" parent="." instance=ExtResource("2_g1dw6")]
+transform = Transform3D(-0.255, 0, -2.22928e-08, 0, 0.255, 0, 2.22928e-08, 0, -0.255, 0, 1.46583, 0.240832)
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.15
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_yw30f")
+pitch_scale = 1.2

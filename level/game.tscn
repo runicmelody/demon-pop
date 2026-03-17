@@ -1,0 +1,206 @@
+[gd_scene load_steps=8 format=3 uid="uid://rodwur8gxjbg"]
+
+[ext_resource type="PackedScene" uid="uid://k7anjcpc28w2" path="res://level/playerspawner.tscn" id="1_l5ub2"]
+[ext_resource type="Script" uid="uid://cbnsyrx28h8i4" path="res://level/game.gd" id="1_to0a4"]
+[ext_resource type="Material" uid="uid://d33e4cw0ny3b2" path="res://level/cubematerial.tres" id="2_to0a4"]
+[ext_resource type="PackedScene" uid="uid://bq88qtgi51tnx" path="res://player/player.tscn" id="4_xkvjb"]
+[ext_resource type="PackedScene" uid="uid://c3dgenwkhn120" path="res://mob/mob_spawner_3d.tscn" id="5_famlx"]
+
+[sub_resource type="Environment" id="Environment_80nbo"]
+background_mode = 1
+background_color = Color(0.259474, 0, 0.0990453, 1)
+fog_light_color = Color(0.610746, 0.850661, 0.951412, 1)
+fog_depth_curve = 1.51572
+
+[sub_resource type="LabelSettings" id="LabelSettings_to0a4"]
+font_size = 30
+font_color = Color(1, 1, 0, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_to0a4")
+
+[node name="scene" type="Node3D" parent="."]
+
+[node name="playerspawner" parent="scene" instance=ExtResource("1_l5ub2")]
+transform = Transform3D(1.19209e-07, 0, 1, 0, 1, 0, -1, 0, 1.19209e-07, 10.2268, -0.401192, 0.0236636)
+visible = false
+
+[node name="map" type="Node" parent="."]
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -5.00117, -3, 0)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -10, -3, 0)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 10, -3, 0)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -3, 10)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -3, -10)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 5, -3, 0)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -3, -15)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -3, 15)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 5, -3, -15)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -5, -3, -15)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -5, -3, 15)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 5, -3, 15)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 10, -3, 15)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -10, -3, 15)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 10, -3, -15)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -10, -3, -15)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -15, -3, -13)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 15, -3, -13)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -15, -3, 13)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D26" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 15, -3, 13)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.00117016, -3, 5)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.00117016, -3, -5)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.00117016, -3, 0)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.0012, -3, 8)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.0012, -3, -8)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 16.9988, -3, -8)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 16.9988, -3, 8)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D30" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -15.0012, -3, 0)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="CSGBox3D31" type="CSGBox3D" parent="map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 14.9988, -3, 0)
+use_collision = true
+material = ExtResource("2_to0a4")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_80nbo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00872653, 0.999962, 0, -0.999962, -0.00872653, 0, 14, 0)
+light_color = Color(1, 0.576471, 0.584314, 1)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("4_xkvjb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, -1, 0)
+jumpspeed = 10
+max_speed = 10.0
+
+[node name="MobSpawner3D" parent="." instance=ExtResource("5_famlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1, -1.7, -0.3)
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.0197917
+anchor_top = 0.0277778
+anchor_right = 0.145833
+anchor_bottom = 0.105556
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Score : 0"
+label_settings = SubResource("LabelSettings_to0a4")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="mob_spawned" from="MobSpawner3D" to="." method="_on_mob_spawner_3d_mob_spawned"]

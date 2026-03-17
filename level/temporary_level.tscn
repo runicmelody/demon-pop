@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://dp7sxe5xl5shk"]
+
+[ext_resource type="Texture2D" uid="uid://bos7rridjkps1" path="res://level/checkboard.png" id="1_cig4d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ooyhk"]
+albedo_color = Color(1, 0.717647, 0.188235, 1)
+albedo_texture = ExtResource("1_cig4d")
+uv1_triplanar = true
+uv1_triplanar_sharpness = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pixig"]
+albedo_color = Color(0.626317, 0.290654, 0.077928, 1)
+albedo_texture = ExtResource("1_cig4d")
+uv1_triplanar = true
+uv1_triplanar_sharpness = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7l0sc"]
+albedo_color = Color(0.286275, 0.682353, 0.427451, 1)
+albedo_texture = ExtResource("1_cig4d")
+uv1_triplanar = true
+uv1_triplanar_sharpness = 4.0
+
+[node name="TemporaryLevel" type="Node3D"]
+
+[node name="Bridge2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.349465, 0, 10.5)
+use_collision = true
+size = Vector3(4, 1, 3)
+material = SubResource("StandardMaterial3D_ooyhk")
+
+[node name="Bridge5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.5)
+use_collision = true
+size = Vector3(4, 1, 3)
+material = SubResource("StandardMaterial3D_ooyhk")
+
+[node name="Bridge6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.5)
+use_collision = true
+size = Vector3(4, 1, 3)
+material = SubResource("StandardMaterial3D_ooyhk")
+
+[node name="Platform6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+use_collision = true
+size = Vector3(17, 11, 15)
+material = SubResource("StandardMaterial3D_pixig")
+
+[node name="Platform7" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 26)
+use_collision = true
+size = Vector3(9, 11, 9)
+material = SubResource("StandardMaterial3D_7l0sc")
+
+[node name="Bridge3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98547, 0, 14.4992)
+use_collision = true
+size = Vector3(4, 1, 3)
+material = SubResource("StandardMaterial3D_ooyhk")
+
+[node name="Bridge4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.6307, 0, 14.1397)
+use_collision = true
+size = Vector3(4, 1, 3)
+material = SubResource("StandardMaterial3D_ooyhk")
+
+[node name="Bridge7" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.445, 0, 13.5387)
+use_collision = true
+size = Vector3(4, 1, 3)
+material = SubResource("StandardMaterial3D_ooyhk")

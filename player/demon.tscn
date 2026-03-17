@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8w8l5pcqjbf4"]
+
+[ext_resource type="PackedScene" uid="uid://dmcisa6tlql5b" path="res://player/demon.blend" id="1_dv6x7"]
+[ext_resource type="Texture2D" uid="uid://8uspdgmq2ss2" path="res://Image #28(1).png" id="2_08f0l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dv6x7"]
+albedo_texture = ExtResource("2_08f0l")
+albedo_texture_force_srgb = true
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.108819
+
+[node name="demon" instance=ExtResource("1_dv6x7")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_dv6x7")

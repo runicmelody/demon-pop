@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq88qtgi51tnx"]
+
+[ext_resource type="PackedScene" uid="uid://b8w8l5pcqjbf4" path="res://demon.tscn" id="2_g1dw6"]
+[ext_resource type="PackedScene" uid="uid://chjrhhjvxun3r" path="res://player/simple_gun/gun_model.glb" id="2_rkbax"]
+
+[sub_resource type="GDScript" id="GDScript_sh265"]
+script/source = "extends CharacterBody3D
+@export var  jumpspeed = 5
+var reset_count = 0
+var acceleration = 1.0
+var debug = 0
+var game = 1
+@export var max_speed = 7.5
+
+@export var mouse_sensivity = 0.5
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+@onready var world = $\"../../WorldEnvironment\"
+@onready var player_spawner = $\"../playerspawner\"
+
+
+func reset() -> void:
+	position = player_spawner.position
+	rotation = player_spawner.rotation
+	reset_count += 1
+	
+func _unhandled_input(event):
+		if event.is_action_pressed(\"ui_cancel\"):
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			free()
+		if event is InputEventMouseMotion:
+			rotation_degrees.y -= event.relative.x * mouse_sensivity
+			%Camera3D.rotation_degrees.x -= event.relative.y * mouse_sensivity
+			%Camera3D.rotation_degrees.x = clamp(%Camera3D.rotation_degrees.x,-95,95)
+		elif event.is_action_pressed(\"ui_accept\") and is_on_floor():
+			velocity.y += jumpspeed
+		elif event.is_action_released(\"ui_accept\") and is_on_floor():
+			velocity.y += jumpspeed
+		elif event.is_action_pressed(\"acceleration\") and is_on_floor():
+			acceleration += 1
+		
+		elif event.is_action_pressed(\"reset\"):
+			reset()
+
+
+func _physics_process(delta):
+	if position.y <= -11:
+		reset()
+	if not is_on_floor():
+		velocity.y -= jumpspeed*delta*2
+	
+	var input_direction_2D = Input.get_vector(\"left\",\"right\",\"forward\",\"backward\")
+	var input_direction_3D =Vector3(input_direction_2D.x,0,input_direction_2D.y)
+	var direction = transform.basis * input_direction_3D 
+
+	velocity.x += direction.x  * delta * max_speed * 200
+	velocity.z += direction.z  * delta * max_speed * 200
+	velocity.x = direction.x  * delta * max_speed * 200
+	velocity.z = clamp(velocity.z,0,max_speed)
+	velocity.x = clamp(velocity.x,0,max_speed)
+	move_and_slide()
+	
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
+
+[node name="Player" type="CharacterBody3D"]
+script = SubResource("GDScript_sh265")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_4flbx")
+debug_color = Color(0.678907, 0.504413, 0, 0.42)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, -1.46899e-13, 2.63386e-13, 1.18998e-13, 0.994685, 0.102966, -2.77112e-13, -0.102966, 0.994685, 2.27374e-13, 1.47237, -0.18721)
+
+[node name="gun_model" parent="Camera3D" instance=ExtResource("2_rkbax")]
+transform = Transform3D(-0.386432, 4.59846e-14, -5.83495e-08, -6.00797e-09, 0.384378, 0.0397893, 5.80394e-08, 0.0397893, -0.384378, 0.470642, -0.322938, -0.47506)
+
+[node name="demon" parent="." instance=ExtResource("2_g1dw6")]
+transform = Transform3D(-0.255, 0, -2.22928e-08, 0, 0.255, 0, 2.22928e-08, 0, -0.255, 0, 1.46583, 0.240832)

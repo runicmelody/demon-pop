@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://nmjk4oe3rnyt"]
+
+[ext_resource type="Script" uid="uid://b8lpjyg4o2w0e" path="res://level/animatable_body_3d.gd" id="1_q06lf"]
+[ext_resource type="Material" uid="uid://bh1ego7bi1olb" path="res://mob/spawner/spawner_screen_material.tres" id="2_hrpga"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vdwy4"]
+
+[node name="AnimatableBody3D" type="AnimatableBody3D"]
+script = ExtResource("1_q06lf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.252, 0, 0, 0, 1.1, 0, 0, 0)
+use_collision = true
+material = ExtResource("2_hrpga")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.255, 0, 0, 0, 1.1, 0, 0, 0)
+shape = SubResource("BoxShape3D_vdwy4")

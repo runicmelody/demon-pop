@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct5vtopvme60a"]
+
+[ext_resource type="PackedScene" uid="uid://b5pqgv0btiqx" path="res://player/jester.blend" id="1_aa3eu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oc845"]
+albedo_color = Color(0.235294, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aa3eu"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[node name="jester" instance=ExtResource("1_aa3eu")]
+
+[node name="spectre_003" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_oc845")
+surface_material_override/1 = SubResource("StandardMaterial3D_aa3eu")
